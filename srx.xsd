@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.landsar.org.nz/SRX/1/0" 
+		xmlns:srx="http://www.landsar.org.nz/SRX/1/0" 
+		xmlns:gpx="http://www.topografix.com/GPX/1/1" 
+		elementFormDefault="qualified"
+		version="1.0">
+	
+	
+	<include schemaLocation="./pre-operational.xsd" />
+	<include schemaLocation="./operational.xsd" />
+	<include schemaLocation="./post-operational.xsd" />
+
+  
+</schema>

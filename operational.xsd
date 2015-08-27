@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.landsar.org.nz/SRX/1/0" 
+		xmlns:srx="http://www.landsar.org.nz/SRX/1/0" 
+		elementFormDefault="qualified"
+		version="1.0">
+
+ 	<xs:include schemaLocation="./pre-operational.xsd" />
+	<xs:include schemaLocation="./post-operational.xsd" /> 
+
+
+
+    <xs:element name="operation" type="srx:operationType"/>
+    <xs:element name="operationalPeriod" type="srx:operationalPeriodType" />
+    <xs:element name="team" type="srx:teamType"/>
+    <xs:element name="teamID" type="srx:teamIDType"/>
+    <xs:element name="task" type="srx:taskType"/>
+    <xs:element name="taskID" type="srx:taskIDType"/>
+    <xs:element name="subjectReport" type="srx:subjectReportType"/>
+   
+    
+   	<xs:simpleType name="teamIDType">
+		<xs:annotation>
+			<xs:documentation>
+				A unique identifier representing an operational SAR team, eg "Team 101".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="string"/>
+	</xs:simpleType>
+    
+    <xs:complexType name="teamType"> 
+    	<xs:sequence> 
+    		<xs:annotation>
+    			<xs:documentation>
+    				Represents a SAR team, including its leader, a list of members, and a list of tasks assigned.
+    			</xs:documentation>
+    		</xs:annotation> 
+    		<xs:element name="teamID" type="srx:teamIDType" /> 		
+    		<xs:element name="assignedTask" type="srx:taskIDType" maxOccurs="unbounded" minOccurs="0"/> 
+    		<xs:element name="leader" type="srx:memberIDType" maxOccurs="1" minOccurs="0"/>  
+    		<xs:element name="member" type="srx:memberIDType" maxOccurs="unbounded" minOccurs="0"/>    				    		
+    	</xs:sequence>
+    </xs:complexType>
+    
+ 	 <xs:simpleType name="taskIDType">
+		<xs:annotation>
+			<xs:documentation>
+				A unique identifier representing a SAR task, eg "Task 205".
+			</xs:documentation>
+		</xs:annotation>
+		<restriction base="string"/>
+	</xs:simpleType>
+	
+	<xs:complexType name="taskType">
+		<xs:sequence> 
+    		<xs:annotation>
+    			<xs:documentation>
+    				Represents a SAR task. 
+    			</xs:documentation>
+    		</xs:annotation>    
+    		<xs:element name="taskID" type="srx:taskIDType" > </xs:element>		
+    		<xs:element name="assignedToTeam" type="srx:teamIDType" maxOccurs="unbounded" minOccurs="0"/> 
+    		<xs:element name="tasking" type="srx:textType" />
+    		<xs:element name="decisionPoints" type="gpx:waypoint" /> 
+    		<xs:element name="hazards" type="srx:textType" />
+    		<xs:element name="teamDebrief" type="srx:teamDebriefType" maxOccurs="unbounded" minOccurs="0"/>		     		    						    		
+    	</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="teamDebriefType">
+		<xs:sequence> 
+    		<xs:annotation>
+    			<xs:documentation>
+    				Represents information from a team debrief. 
+    			</xs:documentation>
+    		</xs:annotation>    
+    		<xs:element name="taskID" type="srx:taskIDType" > </xs:element>		
+    		<xs:element name="team" type="srx:teamIDType" maxOccurs="unbounded" minOccurs="0" /> 
+    		<xs:element name="debriefNotes" type="srx:textType" />
+    		<xs:element name="pod" type="float" />	     		    						    		
+    	</xs:sequence>
+	</xs:complexType>
+ 
+    		
+    <xs:complexType name="operationType"> 
+    	<xs:sequence> 
+    		<xs:annotation>
+    			<xs:documentation>
+    				The operationType defines one SAR operation. It
+    				allows for inclusion of all Operational Periods and
+    				the information needed for Incident Action Plans
+    			</xs:documentation>
+    		</xs:annotation>    		
+    		<xs:element ref="srx:operationalPeriod"  maxOccurs="unbounded" minOccurs="1"/>   				    		
+    	</xs:sequence>
+    	<xs:attribute name="operationName" type="string"/>
+    	<xs:attribute name="coordinatingAuthority" type="string"/>
+    	<xs:attribute name="coordinatingAuthorityUniqueIdentifier" type="string"/>
+    </xs:complexType>
+
+    <xs:complexType name="operationalPeriodType">    	
+    	<xs:sequence>
+    	    <xs:annotation>
+    			<xs:documentation>
+    				The operationalPeriodType defines one operational period (or shift) within an operation. It
+    				includes all the information needed for the period's Incident Action Plans.
+    				There must be at least one one operationalPeriod within an operation, but there can be many.
+    			</xs:documentation>
+    		</xs:annotation>  	 
+    		<xs:element ref="srx:communicationsPlan"/>
+    		<xs:element ref="srx:incidentObjectives"/>
+    		<xs:element ref="srx:medicalPlan"/>
+    		<xs:element ref="srx:safetyPlan"/>
+    		<xs:element ref="srx:sectorAssignments"/>
+    		<xs:element ref="srx:situationReport"/>
+    		<xs:element ref="srx:subjectReport"/>
+    		<xs:element ref="srx:weatherForecast"/>    			    
+    	</xs:sequence> 
+    	<xs:attribute name="periodNumber" type="int"/>
+    	<xs:attribute name="start" type="dateTime"/>
+    	<xs:attribute name="end" type="dateTime"/>  	  	
+    </xs:complexType>
+
+
+
+    <xs:complexType name="subjectReportType">
+    	<xs:sequence>
+    	   	<xs:element name="informant" type="srx:informantType" maxOccurs="unbounded" minOccurs="0"/>
+   			<xs:element name="subject" type="srx:subjectType"  maxOccurs="unbounded" minOccurs="0"/>
+    		<xs:element name="circumstances" type="srx:circumstancesType"/>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="subjectType"></xs:complexType>
+
+    <xs:complexType name="informantType"></xs:complexType>
+
+    <xs:complexType name="circumstancesType"></xs:complexType>
+    
+    <xs:complexType name="situationReportType"></xs:complexType>
+
+    <xs:complexType name="incidentObjectivesType"></xs:complexType>
+
+    <xs:complexType name="safetyPlanType"></xs:complexType>
+
+    <xs:complexType name="sectorAssignmentsType"></xs:complexType>
+
+    <xs:complexType name="medicalPlanType"></xs:complexType>
+
+    <xs:complexType name="communicationsPlanType"></xs:complexType>
+
+    <xs:complexType name="weatherForecastType"></xs:complexType>
+
+    <xs:complexType name="textType">
+    	<xs:sequence>
+    		<xs:element name="paragraph" type="string"  minOccurs="0" maxOccurs="unbounded"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+
+
+</xs:schema>

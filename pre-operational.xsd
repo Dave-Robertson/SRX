@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.landsar.org.nz/SRX/1/0"
+	xmlns:srx="http://www.landsar.org.nz/SRX/1/0" 
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified"
+	version="1.0">
+	
+    <xs:element name="member" type="srx:memberType"></element>
+    <xs:element name="memberList" type="srx:memberListType"></element>
+    <xs:element name="memberID" type="srx:memberIDType"></element>   
+	<xs:element name="memberIDList" type="srx:memberIDListType"></element>
+   
+    <xs:element name="group" type="srx:groupType"></element>
+    <xs:element name="groupList" type="srx:groupListType"></element>
+    <xs:element name="groupID" type="srx:groupIDType"></element>
+	<xs:element name="groupIDList" type="srx:groupIDListType"></element>
+
+	<xs:element name="image" type="srx:imageType"></element>
+	<xs:element name="imageList" type="srx:imageListType"></element>
+	
+
+	<xs:simpleType name="memberIDType">
+		<xs:annotation>
+			<xs:documentation>
+				A unique identifier representing a SAR member.
+			</documentation>
+		</annotation>
+		<xs:restriction base="string"> </restriction>
+	</simpleType>
+	
+	<xs:complexType name="memberType">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+					Represents a SAR member. All elements are optional.
+					nok_name refers to the member's next of kin.
+					nok_relationship eg Father, Wife, Partner, etc.
+					nok_address and nok_phone are contact details for
+					the person named as nok.
+				</documentation>
+			</annotation>
+			<xs:element name="memberID" type="srx:memberIDType" minOccurs="0"></element>
+			<xs:element name="groupID" type="srx:groupIDType" minOccurs="0"></element>
+			<xs:element name="first_name" type="string" minOccurs="0"></element>
+			<xs:element name="phone" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+			<xs:element name="surname" type="string" minOccurs="0"></element>
+			<xs:element name="email" type="string" minOccurs="0"></element>
+			<xs:element name="dob" type="date" minOccurs="0"></element>
+			<xs:element name="date_joined" type="date" minOccurs="0"></element>
+			<xs:element name="address" type="srx:addressType" minOccurs="0"></element>
+			<xs:element name="photo" type="srx:imageType" maxOccurs="1" minOccurs="0"></element>
+			<xs:element name="nok_name" type="string" minOccurs="0"></element>
+			<xs:element name="nok_relationship" type="string" minOccurs="0"></element>
+			<xs:element name="nok_address" type="srx:addressType" minOccurs="0"></element>
+			<xs:element name="nok_phone" type="string" minOccurs="0"></element>
+			<xs:any namespace="##other" minOccurs="0"></any>
+		</sequence>
+	</complexType>
+	
+	<xs:complexType name="memberListType">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+					Represents a list of 1 or more members. 
+				</documentation>
+			</annotation>
+			<xs:element name="member" type="srx:memberType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<xs:complexType name="memberIDListType">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+					Represents a list of 0 or more member IDs. 
+				</documentation>
+			</annotation>
+			<xs:element name="memberID" type="srx:memberIDType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>	
+
+	<xs:simpleType name="groupIDType">
+		<xs:annotation>
+			<xs:documentation>
+				A unique identifier representing a SAR group, could be a formal group id or just the groups name .
+			</documentation>
+		</annotation>
+		<xs:restriction base="string"> </restriction>
+	</simpleType>
+
+	<xs:complexType name="groupType">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+					Represents a SAR group. The group ID must exist.
+					All other elements are optional
+				</documentation>
+			</annotation>
+			<xs:element name="group_name" type="string" minOccurs="0"></element>
+			<xs:element name="groupID" type="srx:groupIDType" minOccurs="0"></element>
+			<xs:element name="chair" type="srx:memberIDType" minOccurs="0" maxOccurs="1"></element>
+			<xs:element name="secretary" type="srx:memberIDType" minOccurs="0" maxOccurs="1"></element>
+			<xs:element name="treasurer" type="srx:memberIDType" minOccurs="0" maxOccurs="1"></element>
+			<xs:element name="training_coordinator" type="srx:memberIDType" minOccurs="0" maxOccurs="1"></element>
+			<xs:element name="memberIDList" type="srx:memberIDListType" minOccurs="0" maxOccurs="1"> </element>				
+			<xs:any namespace="##other" minOccurs="0"></any>			
+		</sequence>
+	</complexType>
+	
+	<xs:complexType name="groupListType">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+					Represents a list of 0 or more groups. 
+				</documentation>
+			</annotation>
+			<xs:element name="group" type="srx:groupType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<xs:complexType name="groupIDListType">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+					Represents a list of 1 or more group IDs. 
+				</documentation>
+			</annotation>
+			<xs:element name="groupID" type="srx:groupIDType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>	
+
+	<xs:complexType name="addressType">
+		<xs:sequence>
+			<xs:element name="address_line" type="string" minOccurs="0" maxOccurs="3"></element>
+			<xs:element name="city" type="string" minOccurs="0"></element>
+			<xs:element name="postcode" type="string" minOccurs="0"></element>
+			<xs:element name="country" type="string" minOccurs="0"></element>
+			<xs:any namespace="##other" minOccurs="0"></any>		
+		</sequence>
+	</complexType>
+
+
+	
+	<xs:complexType name="imageType">
+		<xs:simpleContent>
+			<extension base="base64Binary">
+				<attribute name="imageData" type="srx:imageDataType"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	
+	<xs:simpleType name="imageDataType">
+  		<xs:restriction base="NOTATION">
+    		<xs:enumeration value="srx:jpg"/>
+    		<xs:enumeration value="srx:png"/>
+    		<xs:enumeration value="srx:pdf"/>
+  		</restriction>
+	</simpleType>
+	
+	<xs:complexType name="imageListType">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+					Represents a list of 0 or more images. 
+				</documentation>
+			</annotation>
+			<xs:element name="image" type="srx:imageType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>	
+	</complexType>
+	
+	<xs:notation name="jpg" public="image/jpeg" />	
+	<xs:notation name="png" public="image/png" />
+	<xs:notation name="pdf" public="image/pdf" />	
+
+   
+</schema>
