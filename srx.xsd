@@ -1,15 +1,358 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" 
-		targetNamespace="http://www.landsar.org.nz/SRX/1/0" 
-		xmlns:srx="http://www.landsar.org.nz/SRX/1/0" 
-		xmlns:gpx="http://www.topografix.com/GPX/1/1" 
-		elementFormDefault="qualified"
-		version="1.0">
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.landsar.org.nz/SRX/1/0" 
+	xmlns:srx="http://www.landsar.org.nz/SRX/1/0" 
+	xmlns:gpx="http://www.topografix.com/GPX/1/1" 
+	elementFormDefault="qualified"
+	version="1.0">
+	 
+	<xsd:import namespace="http://www.topografix.com/GPX/1/1" schemaLocation="http://www.topografix.com/GPX/1/1/gpx.xsd"></xsd:import>
+
+	<xsd:annotation>
+		<xsd:documentation>
+			<sectionHeader>
+        		*** Pre-operational section ***
+				This includes anything known before an operation begins. 
+				For example, member and group information, assets, contacts, and pre-plans.        
+    		</sectionHeader>
+    	</xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="member" type="srx:memberType"> </xsd:element>
+    <xsd:element name="memberID" type="srx:memberIDType"></xsd:element>     
+    <xsd:element name="group" type="srx:groupType"></xsd:element>
+    <xsd:element name="groupID" type="srx:groupIDType"></xsd:element>
+	<xsd:element name="image" type="srx:imageType"></xsd:element>
+
+	<xsd:simpleType name="memberIDType">
+		<xsd:annotation>
+			<xsd:documentation>
+				A unique identifier representing a SAR member.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"> </xsd:restriction>
+	</xsd:simpleType>
 	
+	<xsd:complexType name="memberType">
+		<xsd:sequence>
+			<xsd:annotation>
+				<xsd:documentation>
+					Represents a SAR member. All elements are optional.
+					nok_name refers to the member's next of kin.
+					nok_relationship eg Father, Wife, Partner, etc.
+					nok_address and nok_phone are contact details for
+					the person named as next of kin.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:element name="memberID" type="srx:memberIDType" minOccurs="0"></xsd:element>
+			<xsd:element name="groupID" type="srx:groupIDType" minOccurs="0"></xsd:element>
+			<xsd:element name="first_name" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="middle_name" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>			
+			<xsd:element name="surname" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="phone" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			<xsd:element name="email" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="dob" type="xsd:date" minOccurs="0"></xsd:element>
+			<xsd:element name="date_joined" type="xsd:date" minOccurs="0"></xsd:element>
+			<xsd:element name="address" type="srx:addressType" minOccurs="0"></xsd:element>
+			<xsd:element name="photo" type="srx:imageType" maxOccurs="1" minOccurs="0"></xsd:element>
+			<xsd:element name="nok_name" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="nok_relationship" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:element name="nok_address" type="srx:addressType" minOccurs="0"></xsd:element>
+			<xsd:element name="nok_phone" type="xsd:string" minOccurs="0"></xsd:element>
+			<xsd:any namespace="##other" minOccurs="0" maxOccurs="unbounded"></xsd:any>
+		</xsd:sequence>
+	</xsd:complexType>
 	
-	<include schemaLocation="./pre-operational.xsd" />
-	<include schemaLocation="./operational.xsd" />
-	<include schemaLocation="./post-operational.xsd" />
+
+	<xsd:simpleType name="groupIDType">
+		<xsd:annotation>
+			<xsd:documentation>
+				A unique identifier representing a SAR group, could be a formal group id or just the groups name .
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"> </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="groupType">
+		<xsd:sequence>
+			<xsd:annotation>
+				<xsd:documentation>
+					Represents a SAR group. The group ID must exist.
+					All other elements are optional
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:element name="groupID" type="srx:groupIDType" minOccurs="1"/>
+			<xsd:element name="group_name" type="xsd:string" minOccurs="0"/>			
+			<xsd:element name="chair" type="srx:memberIDType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="secretary" type="srx:memberIDType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="treasurer" type="srx:memberIDType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="training_coordinator" type="srx:memberIDType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="memberID" type="srx:memberIDType" minOccurs="0" maxOccurs="unbounded"/>			
+			<xsd:any namespace="##other" minOccurs="0" maxOccurs="unbounded"></xsd:any>			
+		</xsd:sequence>
+	</xsd:complexType>
+	
+
+	<xsd:annotation>
+		<xsd:documentation>
+			<sectionHeader>
+    			*** Operational section ***
+				This section contains information generated during an operation. 
+				It is based on the structure of the Incident Action Plan.         
+    		</sectionHeader>
+    	</xsd:documentation>
+    </xsd:annotation>
+	
+	<xsd:element name="operation" type="srx:operationType"/>
+    <xsd:element name="operationalPeriod" type="srx:operationalPeriodType" />
+    <xsd:element name="team" type="srx:teamType"/>
+    <xsd:element name="teamID" type="srx:teamIDType"/>
+    <xsd:element name="task" type="srx:taskType"/>
+    <xsd:element name="taskID" type="srx:taskIDType"/>
+    <xsd:element name="subjectReport" type="srx:subjectReportType"/>
+    <xsd:element name="communicationsPlan" type="srx:communicationsPlanType"/>
+    <xsd:element name="incidentObjectives" type="srx:incidentObjectivesType"/>
+    <xsd:element name="medicalPlan" type="srx:medicalPlanType"/>
+    <xsd:element name="safetyPlan" type="srx:safetyPlanType"/>
+    <xsd:element name="sectorAssignments" type="srx:sectorAssignmentsType"/>
+    <xsd:element name="situationReport" type="srx:situationReportType"/>
+    <xsd:element name="weatherForecast" type="srx:weatherForecastType"/>
+    
+    
+   	<xsd:simpleType name="teamIDType">
+		<xsd:annotation>
+			<xsd:documentation>
+				A unique identifier representing an operational SAR team, eg "Team 101".
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+    
+    <xsd:complexType name="teamType"> 
+    	<xsd:sequence> 
+    		<xsd:annotation>
+    			<xsd:documentation>
+    				Represents a SAR team, including its leader, a list of members, and a list of tasks assigned.
+    			</xsd:documentation>
+    		</xsd:annotation> 
+    		<xsd:element name="teamID" type="srx:teamIDType" /> 		
+    		<xsd:element name="assignedTask" type="srx:taskIDType" maxOccurs="unbounded" minOccurs="0"/> 
+    		<xsd:element name="leaderID" type="srx:memberIDType" maxOccurs="1" minOccurs="0"/>  
+    		<xsd:element name="memberID" type="srx:memberIDType" maxOccurs="unbounded" minOccurs="0"/>    				    		
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+ 	 <xsd:simpleType name="taskIDType">
+		<xsd:annotation>
+			<xsd:documentation>
+				A unique string identifier representing a SAR task, eg "Task 205".
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="taskType">
+		<xsd:sequence> 
+    		<xsd:annotation>
+    			<xsd:documentation>
+    				Represents a SAR task. 
+    			</xsd:documentation>
+    		</xsd:annotation>    
+    		<xsd:element name="taskID" type="srx:taskIDType" /> 	
+    		<xsd:element name="assignedToTeam" type="srx:teamIDType" maxOccurs="unbounded" minOccurs="0"/> 
+    		<xsd:element name="tasking" type="srx:textType" />
+    		<xsd:element name="decisionPoint" type="gpx:wptType" maxOccurs="unbounded" minOccurs="0"/> 
+    		<xsd:element name="hazard" type="srx:textType" maxOccurs="unbounded" minOccurs="0"/>
+    		<xsd:element name="teamDebrief" type="srx:teamDebriefType" maxOccurs="unbounded" minOccurs="0"/>		     		    						    		
+    	</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="teamDebriefType">
+		<xsd:sequence> 
+    		<xsd:annotation>
+    			<xsd:documentation>
+    				Represents information from a team debrief. 
+    			</xsd:documentation>
+    		</xsd:annotation>    
+    		<xsd:element name="taskID" type="srx:taskIDType" />	
+    		<xsd:element name="teamID" type="srx:teamIDType" maxOccurs="unbounded" minOccurs="0" /> 
+    		<xsd:element name="debriefNotes" type="srx:textType" />
+    		<xsd:element name="pod" type="xsd:float" />	     		    						    		
+    	</xsd:sequence>
+	</xsd:complexType>
+ 
+    		
+    <xsd:complexType name="operationType"> 
+    	<xsd:sequence> 
+    		<xsd:annotation>
+    			<xsd:documentation>
+    				The operationType defines one SAR operation. It
+    				allows for inclusion of all Operational Periods and
+    				the information needed for Incident Action Plans
+    			</xsd:documentation>
+    		</xsd:annotation>    		
+    		<xsd:element ref="srx:operationalPeriod"  maxOccurs="unbounded" minOccurs="1"/>   				    		
+    	</xsd:sequence>
+    	<xsd:attribute name="operationName" type="xsd:string"/>
+    	<xsd:attribute name="coordinatingAuthority" type="xsd:string"/>
+    	<xsd:attribute name="coordinatingAuthorityUniqueIdentifier" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="operationalPeriodType">    	
+    	<xsd:sequence>
+    	    <xsd:annotation>
+    			<xsd:documentation>
+    				The operationalPeriodType defines one operational period (or shift) within an operation. It
+    				includes all the information needed for the period's Incident Action Plans.
+    				There must be at least one one operationalPeriod within an operation, but there can be many.
+    			</xsd:documentation>
+    		</xsd:annotation>
+    		<xsd:element ref="srx:subjectReport"/> 
+    		<xsd:element ref="srx:incidentObjectives"/> 
+    		<xsd:element ref="srx:task" maxOccurs="unbounded" minOccurs="0"/>	 
+    		<xsd:element ref="srx:communicationsPlan"/>			
+    		<xsd:element ref="srx:medicalPlan"/>
+    		<xsd:element ref="srx:safetyPlan"/>
+    		<xsd:element ref="srx:sectorAssignments"/>
+    		<xsd:element ref="srx:situationReport"/>   		
+    		<xsd:element ref="srx:weatherForecast"/>    			    
+    	</xsd:sequence> 
+    	<xsd:attribute name="periodNumber" type="xsd:int"/>
+    	<xsd:attribute name="start" type="xsd:dateTime"/>
+    	<xsd:attribute name="end" type="xsd:dateTime"/>  	  	
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="subjectReportType">
+    	<xsd:sequence>
+    	   	<xsd:element name="informant" type="srx:informantType" maxOccurs="unbounded" minOccurs="0"/>
+   			<xsd:element name="subject" type="srx:subjectType"  maxOccurs="unbounded" minOccurs="0"/>
+    		<xsd:element name="circumstances" type="srx:circumstancesType"/>
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="subjectType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="informantType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="circumstancesType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+    
+    <xsd:complexType name="situationReportType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="incidentObjectivesType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="safetyPlanType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="sectorAssignmentsType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="medicalPlanType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="communicationsPlanType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="weatherForecastType">
+    	<xsd:annotation><xsd:documentation>
+    		Not yet implemented
+    	</xsd:documentation></xsd:annotation>
+    </xsd:complexType>
+
+
+	<xsd:annotation>
+		<xsd:documentation>
+			<sectionHeader>
+    			*** Post-operational data ***
+				Statistical reports, debreif notes, review notes, etc. 		
+				Not yet implemented       
+    		</sectionHeader>
+   	 	</xsd:documentation>
+    </xsd:annotation>	
+
+
+
+
+
+	<xsd:annotation>
+		<xsd:documentation>
+			<sectionHeader>
+				*** Type declarations ***
+				Miscellaneous types defined to support the above definitions.        
+    		</sectionHeader>
+    	</xsd:documentation>
+    </xsd:annotation>
+       
+	
+	<xsd:complexType name="addressType">
+		<xsd:sequence>
+			<xsd:element name="address_line" type="xsd:string" minOccurs="0" maxOccurs="3"/>
+			<xsd:element name="city" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="postcode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="country" type="xsd:string" minOccurs="0"/>
+			<xsd:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>		
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="imageType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:base64Binary">
+				<xsd:attribute name="imageData" type="srx:imageDataType"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="imageDataType">
+  		<xsd:restriction base="xsd:NOTATION">
+    		<xsd:enumeration value="srx:jpg"/>
+    		<xsd:enumeration value="srx:png"/>
+    		<xsd:enumeration value="srx:pdf"/>
+  		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:notation name="jpg" public="image/jpeg" />	
+	<xsd:notation name="png" public="image/png" />
+	<xsd:notation name="pdf" public="image/pdf" />	
+	
+	<xsd:complexType name="textType">
+    	<xsd:sequence>
+    		<xsd:element name="text" type="xsd:string"  minOccurs="0" maxOccurs="unbounded"/>
+    	</xsd:sequence>
+    </xsd:complexType>
 
   
-</schema>
+</xsd:schema>
