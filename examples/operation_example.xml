@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<srx:operation coordinatingAuthority="Rescue Coordination Centre" coordinatingAuthorityUniqueIdentifier="NZRCC" operationName="Operation Buster" xmlns:p="http://www.topografix.com/GPX/1/1" xmlns:srx="http://www.landsar.org.nz/SRX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.landsar.org.nz/SRX/1/0 srx.xsd ">
+  <srx:operationalPeriod end="2016-11-25T17:30:00" periodNumber="1" start="2016-11-T22:30:00">
+    <srx:subjectReport>
+      <srx:circumstances/>
+    </srx:subjectReport>
+    <srx:incidentObjectives/>
+    
+    <srx:task>
+		<srx:taskID>Task 101</srx:taskID>
+      	<srx:tasking>
+    		<srx:text>Search the Upper track for any sign, using appropriate methods. Liaise with Team 102 at the junction with the Lower track.</srx:text>
+  	 	</srx:tasking>
+    </srx:task>
+    
+    <srx:task>
+		<srx:taskID>Task 102</srx:taskID>
+      	<srx:tasking>
+    		<srx:text>Search the Lower track for any sign, using appropriate methods. Liaise with Team 101 at the junction with the Upper track.</srx:text>
+  	 	</srx:tasking>
+    </srx:task>
+    
+    <srx:task>
+		<srx:taskID>Task 102</srx:taskID>
+      	<srx:tasking>
+    		<srx:text>Sign cut the carpark area. Try to establisha direction of travel.</srx:text>
+  	 	</srx:tasking>
+    </srx:task>
+    
+    <srx:communicationsPlan/>
+    <srx:medicalPlan/>
+    <srx:safetyPlan/>
+    <srx:sectorAssignments/>
+    <srx:situationReport/>
+    <srx:weatherForecast/>
+  </srx:operationalPeriod>
+</srx:operation>

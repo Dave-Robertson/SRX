@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<srx:team xmlns:p="http://www.topografix.com/GPX/1/1" xmlns:srx="http://www.landsar.org.nz/SRX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.landsar.org.nz/SRX/1/0 srx.xsd ">
+  <srx:teamID>Team 101</srx:teamID>
+  <srx:assignedTask>Task 5</srx:assignedTask>
+  <srx:leaderID>0007</srx:leaderID>
+  <srx:memberID>0001</srx:memberID>
+  <srx:memberID>1234</srx:memberID>
+  <srx:memberID>0002</srx:memberID
+</srx:team>

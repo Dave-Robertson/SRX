@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	This file contains a list of 3 SAR members with all their contact details. 
+    Note that these three are also in the team example file, but are included there by 
+    referencing their member IDs only, for efficiency.
+-->
+
+<srx:memberList xmlns:p="http://www.topografix.com/GPX/1/1" xmlns:srx="http://www.landsar.org.nz/SRX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.landsar.org.nz/SRX/1/0 srx.xsd ">
+  <srx:member>
+    <srx:memberID>0001</srx:memberID>
+    <srx:groupID>Dunedin</srx:groupID>
+    <srx:first_name>Joe</srx:first_name>
+    <srx:surname>Bloggs</srx:surname>
+    <srx:phone>021 123 4567</srx:phone>
+    <srx:email>joe@landsar.corp.nz</srx:email>
+    <srx:dob>2001-01-01</srx:dob>
+    <srx:date_joined>2001-01-01</srx:date_joined>
+    <srx:address/>
+    	<srx:address_line>Unit 4</srx:address_line>
+    	<srx:address_line>123 Sealed Road</srx:address_line> 
+    	<srx:address_line>Port Chalmers</srx:address_line>  
+		<srx:city>Dunedin</srx:city>
+		<srx:postcode>9099</srx:postcode>
+		<srx:country>New Zealand</srx:country>
+    </srx:address>    
+    <srx:nok_name>Jim Bloggs</srx:nok_name>
+    <srx:nok_relationship>Father</srx:nok_relationship>
+    <srx:nok_address>
+    	<srx:address_line>Unit 5</srx:address_line>
+    	<srx:address_line>123 Sealed Road</srx:address_line> 
+    	<srx:address_line>Port Chalmers</srx:address_line>  
+		<srx:city>Dunedin</srx:city>
+		<srx:postcode>9099</srx:postcode>
+		<srx:country>New Zealand</srx:country>
+	</srx:nok_address>	
+    <srx:nok_phone>03 123 4568</srx:nok_phone>
+  </srx:member>
+  
+  <srx:member>
+    <srx:memberID>0002</srx:memberID>
+    <srx:groupID>Wellington</srx:groupID>
+    <srx:first_name>Lou</srx:first_name>
+    <srx:surname>King-Keenly</srx:surname>
+    <srx:phone>022 123 4567</srx:phone>
+    <srx:email>lou@do.main.nz</srx:email>
+    <srx:dob>2001-01-01</srx:dob>
+    <srx:date_joined>2001-01-01</srx:date_joined>
+    <srx:address/>
+    	<srx:address_line>123 Gravelly St</srx:address_line> 
+    	<srx:address_line>Miramar</srx:address_line>  
+		<srx:city>Wellington</srx:city>
+		<srx:postcode>9090</srx:postcode>
+		<srx:country>New Zealand</srx:country>
+    </srx:address>    
+    <srx:nok_name>Sir Ching Keenly</srx:nok_name>
+    <srx:nok_relationship>Husband</srx:nok_relationship>
+    <srx:nok_address>
+    	<srx:address_line>123 Gravelly St</srx:address_line> 
+    	<srx:address_line>Wellington</srx:address_line>  
+		<srx:city>Wellington</srx:city>
+		<srx:postcode>9090</srx:postcode>
+		<srx:country>New Zealand</srx:country>
+	</srx:nok_address>	
+    <srx:nok_phone>04 123 4568</srx:nok_phone>
+  </srx:member>
+  
+   <srx:member>
+    <srx:memberID>0007</srx:memberID>
+    <srx:groupID>Turangi</srx:groupID>
+    <srx:first_name>Terry</srx:first_name>
+    <srx:surname>Fox</srx:surname>
+    <srx:phone>021 123 4567</srx:phone>
+    <srx:email>fox.terry@xtra.net.nz</srx:email>
+    <srx:dob>2001-01-01</srx:dob>
+    <srx:date_joined>2001-01-01</srx:date_joined>
+    <srx:address/>
+    	<srx:address_line>123 Pothole Road</srx:address_line> 
+    	<srx:address_line>RD 3</srx:address_line>  
+		<srx:city>Turangi</srx:city>
+		<srx:postcode>9091</srx:postcode>
+		<srx:country>New Zealand</srx:country>
+    </srx:address>    
+    <srx:nok_name>Rita Ruapehu</srx:nok_name>
+    <srx:nok_relationship>Daughter</srx:nok_relationship>
+    <srx:nok_address>
+    	<srx:address_line>123 Bitumen Road</srx:address_line> 
+    	<srx:address_line>Devonport</srx:address_line>  
+		<srx:city>Auckland</srx:city>
+		<srx:postcode>9093</srx:postcode>
+		<srx:country>New Zealand</srx:country>
+	</srx:nok_address>	
+    <srx:nok_phone>03 123 4568</srx:nok_phone>
+  </srx:member>
+  
+</srx:memberList>

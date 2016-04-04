@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	A simple example of a task assigned to a team  
+	The Task ID, Team ID, and the tasking instructions are recorded 
+	along with three decision points and two hazards.	
+	Debrief notes could be included in this but since they are an optional 
+	element they are omitted here for simplicity. 
+-->
+
+<srx:task xmlns:p="http://www.topografix.com/GPX/1/1" xmlns:srx="http://www.landsar.org.nz/SRX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.landsar.org.nz/SRX/1/0 srx.xsd ">
+  <srx:taskID>Task 5</srx:taskID>
+  <srx:assignedToTeam>Team 101</srx:assignedToTeam>
+  <srx:tasking>
+    <srx:text>Search the Upper track for any sign, using appropriate methods. Liaise with Team 102 at the junction with the Lower track.</srx:text>
+  </srx:tasking>
+  <srx:decisionPoint lat="-12.345" lon="123.4567">
+    <p:name>Carpark</p:name>
+  </srx:decisionPoint>
+   <srx:decisionPoint lat="-12.3456" lon="123.4568">
+    <p:name>Track junction</p:name>
+  </srx:decisionPoint>
+   <srx:decisionPoint lat="-12.3457" lon="123.4569">
+    <p:name>Stream crossing</p:name>
+  </srx:decisionPoint>
+  <srx:hazard>
+    <srx:text>Recent windfall may block track.</srx:text>
+  </srx:hazard>
+   <srx:hazard>
+    <srx:text>Land slip on south face of Steep Hill not yet stabilised.</srx:text>
+  </srx:hazard>
+</srx:task>
