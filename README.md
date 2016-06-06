@@ -6,7 +6,12 @@ SRX is an XML Schema document defining a common language for exchanging Search a
 ## Motivation
 
 This project is intended to provide a standard way for software packages used in search and rescue to easily communicate with each other. 
-By providing a standard we hope to save time and effort spent on searches. On those big operations, where multiple groups work together, getting lists of personnel and resources into a common database when the groups use different software can be time-consuming and wasteful of resources. We hope to solve that by developing a communication standard - a common language - that works for the benefit of the whole search and rescue sector. While it may seem easier to simply mandate that everyone should use the same software package, different packages suit different groups' needs, and diversity is a good thing. Experience also shows that the software world changes rapidly, providers and products come and go and the only sure thing is that whatever tools we are using today will be obsolete in five years time. A data communication standard helps to insure against obsolescence by enabling import and export of data in a common format.  
+
+By providing a standard we hope to save time and effort spent on searches. On those big operations, where multiple groups work together, getting lists of personnel and resources into a common database when the groups use different software can be time-consuming and wasteful of resources. We hope to solve that by developing a communication standard - a common language - that works for the benefit of the whole search and rescue sector. While it may seem easier to simply mandate that everyone should use the same software package, different packages suit different groups' needs, and diversity is a good thing. Experience also shows that the software world changes rapidly, providers and products come and go and the only sure thing is that whatever tools we are using today will be obsolete in five years time. 
+
+
+A data communication standard helps to insure against obsolescence by enabling import and export of data in a common format. 
+
 
 ## Contributing to SRX
 
@@ -20,7 +25,7 @@ Use software that supports the SRX standard. When you make decisions about which
 
 If the software you currently use doesn't support SRX, contact the developers and ask them to add it in. 
 
-#### If you are in a goverance role:
+#### If you are in a governance role:
 
 Consider the need for data standards in the SAR sector. Just as we adopt common terminology to make our incident management teams able to interoperate, we need standards to ensure the interoperability of our software. Technology investment can be expensive, and to get the best returns we need strategies to deal with rapid evolution of software and hardware. Defining and adopting standards is key to mitigating the risks of technological obsolescence. Please encourage your organisation to develop and adopt data standards - including this one. 
 
