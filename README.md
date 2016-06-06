@@ -2,10 +2,6 @@
 
 SRX is an XML Schema document defining a common language for exchanging Search and Rescue data between different software packages.
 
-TL;DR
-
-
-
 
 ## Motivation
 
@@ -84,4 +80,14 @@ See the [SRX Schema file formatted as documentation](http://www.landsar.org.nz/S
 ### Sample files
 
 Some sample files are included in the examples directory.
+
+### To Do
+ 
+   - Complete the development of Section 2 Operational information.
+   - Develop Section 3 Post-operational information. 
+   - Write reference implementation apps.
+
+
+
+
    
