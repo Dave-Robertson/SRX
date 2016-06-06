@@ -16,11 +16,11 @@ By providing a standard we hope to save time and effort spent on searches. On th
 
 #### If you are a software developer:
 
-Please consider adopting the SRX format into your search and rescue software. The simplest way would be to build SRX import and export functions using standard XML libraries. This will help to ensure that your software is compatible with others and will help to make your software more efficient and effective. See the Developers section below  
+Please consider adopting the SRX format into your search and rescue software. The simplest way would be to build SRX import and export functions using standard XML libraries. This will help to ensure that your software is compatible with others and will help to make your software more efficient and effective. See the Developers section below for technical details. 
 
 #### If you're a SAR practitioner:
 
-Use software that supports the SRX standard. When you make decisions about which software to adopt consider whether it supports standard ways of communication or standard ways of importin gand exporting your data. While spreadsheets are a valuable tool thay are not a standard. We want to achieve a way to prevent your data being "locked in" to any one product, so that you can easily work togther with other groups when the need arises. 
+Use software that supports the SRX standard. When you make decisions about which software to adopt consider whether it supports standard ways of communication or standard ways to import and export your data. While spreadsheets are a valuable tool thay are not a standard. We want to achieve a way to prevent your data being "locked in" to any one product, so that you can easily work togther with other groups when the need arises. 
 
 If the software you currently use doesn't support SRX, contact the developers and ask them to add it in. 
 
@@ -83,5 +83,5 @@ See the [SRX Schema file formatted as documentation](http://www.landsar.org.nz/S
 
 ### Sample files
 
-Some sample .srx files are included in the examples directory.
+Some sample files are included in the examples directory.
    
