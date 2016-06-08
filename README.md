@@ -31,9 +31,12 @@ Consider the need for data standards in the SAR sector. Just as we adopt common 
 
 
 
-## Developers
+## Developer notes
 
 Fork the project on github and send pull requests to have your changes incorporated into the spec.
+
+
+
 
 ## Documentation
 
@@ -80,7 +83,7 @@ The schema is divided into four sections.
    
 ### Complete XSD specification 
 
-See the [SRX Schema file formatted as documentation](http://www.landsar.org.nz/SRX/1/0) 
+See the [SRX Schema file formatted as documentation](http://www.landsar.org.nz/SRX/1/0/srx.xml) 
 
 ### Sample files
 
